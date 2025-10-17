@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QWER 데뷔 2주년 축하!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .message {
+      font-size: 1.5rem;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #2c2c2c;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+    button {
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #ff4d6d;
+      color: #fff;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #ff3355;
+    }
+  </style>
+</head>
+<body>
+  <div class="message" id="text">✨✨✨ QWER🎉데뷔 2주년🎉축하해! ✨✨✨</div>
+  <button onclick="copyText()">📋 복사하기</button>
+  <button onclick="shareText()">📲 공유하기</button>  <script>
+    const text = document.getElementById('text').innerText;
+
+    function copyText() {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('복사 완료!');
+      }).catch(() => {
+        alert('복사 권한이 없어 텍스트를 길게 눌러 복사해주세요.');
+      });
+    }
+
+    function shareText() {
+      if (navigator.share) {
+        navigator.share({ text })
+          .catch(err => console.log('공유 취소:', err));
+      } else {
+        alert('공유 기능이 지원되지 않는 기기입니다.');
+      }
+    }
+  </script></body>
+</html>
